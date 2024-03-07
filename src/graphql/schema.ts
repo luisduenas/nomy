@@ -1,20 +1,10 @@
 import { schema } from "@composabase/sdk"
 
-import helloCustom from './modules/hello-custom'
-
-schema.query('hello', {
-  definition: {
-    type: schema.string(),
-    args: {
-      name: schema.string().optional(),
-      isImportant: schema.boolean().optional(),
-    },
-  },
-  resolver: 'hello',
-})
+import Article from './modules/Article'
 
 schema.modules([
-  helloCustom,
+  Article
 ])
+
 
 export default schema
