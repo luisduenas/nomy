@@ -2,10 +2,9 @@ import type { ResolverProps } from '@composabase/sdk'
 
 export default async function Resolver({ root }: ResolverProps) {
     const { image } = root
-    console.log("image.entity ",image.entity)
     return {
         __typename: "CustomMediaImage",
-        id: image.entity.uuid,
+        id: image.entity.id,
         changed: image.entity.changed,
         created: image.entity.created,
         langcode: image.entity.langcode,

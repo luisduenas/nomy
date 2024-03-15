@@ -13,8 +13,8 @@ const Article = () => {
     },
     resolver: 'nodeArticle'
   })
+
   module.union('MediaUnion', ['CustomMediaImage'])
-  // module.union('MetaTagUnion', ['MetaTagLink', 'MetaTagValue', 'MetaTagProperty'])
   module.union('MetaTagUnion', ['MetaTagValue'])
 
   module.type('MetaTagValue', {
@@ -27,12 +27,19 @@ const Article = () => {
   })
 
   module.type('CustomFieldMediaLangcode', {
-    value: {
+    id: {
       definition:{
         type: module.string(),
       },
       resolver: "customNodeArticle_field_resolver"
-    }
+    },
+    name: {
+      definition:{
+        type: module.string(),
+      },
+      resolver: "customNodeArticle_field_resolver"
+    },
+    
   })
 
   module.type("CustomMediaImage", {
@@ -58,7 +65,7 @@ const Article = () => {
       definition: {
         type: module.scalar("CustomFieldMediaLangcode")
       },
-      resolver: "customNodeArticle_field_resolver"
+      resolver: "customNodeArticle_FieldLanguage_resolver"
     },
     mediaImage: {
       definition: {
@@ -185,8 +192,6 @@ const Article = () => {
       resolver: "customNodeArticle_field_resolver"
     },
   })
-
-
 
   return module
 }
